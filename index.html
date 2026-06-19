@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYT Puzzle Pal</title>
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/spelling-bee.css">
+  <link rel="stylesheet" href="css/wordle.css">
+  <link rel="stylesheet" href="css/connections.css">
+  <link rel="stylesheet" href="css/pips.css">
+</head>
+<body>
+  <div class="swipe-container" id="swipeContainer">
+
+    <!-- SPELLING BEE -->
+    <section class="game-section" id="spellingBee">
+      <div class="game-header bee-header">
+        <span class="icon">&#x1F41D;</span>
+        <h2>Spelling Bee</h2>
+      </div>
+      <div class="nav-dots bee-nav">
+        <div class="dot active" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+        <div class="dot" data-index="3"></div>
+      </div>
+      <div class="sticky-input bee-sticky">
+        <div class="bee-input-row">
+          <input type="text" maxlength="1" class="bee-box center" data-index="0" inputmode="text" autocomplete="off">
+          <input type="text" maxlength="1" class="bee-box" data-index="1" inputmode="text" autocomplete="off">
+          <input type="text" maxlength="1" class="bee-box" data-index="2" inputmode="text" autocomplete="off">
+          <input type="text" maxlength="1" class="bee-box" data-index="3" inputmode="text" autocomplete="off">
+          <input type="text" maxlength="1" class="bee-box" data-index="4" inputmode="text" autocomplete="off">
+          <input type="text" maxlength="1" class="bee-box" data-index="5" inputmode="text" autocomplete="off">
+          <input type="text" maxlength="1" class="bee-box" data-index="6" inputmode="text" autocomplete="off">
+        </div>
+      </div>
+      <div class="results-scroll" id="beeResults"></div>
+    </section>
+
+    <!-- WORDLE -->
+    <section class="game-section" id="wordle">
+      <div class="game-header wordle-header">
+        <span class="icon">&#x1F7E9;</span>
+        <h2>Wordle</h2>
+      </div>
+      <div class="nav-dots wordle-nav">
+        <div class="dot" data-index="0"></div>
+        <div class="dot active" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+        <div class="dot" data-index="3"></div>
+      </div>
+      <div class="sticky-input wordle-sticky">
+        <div id="wordleRows"></div>
+        <div class="wordle-conflict" id="wordleConflict"></div>
+        <button class="wordle-clear" id="wordleClear">CLEAR</button>
+      </div>
+      <div class="results-scroll" id="wordleResults"></div>
+    </section>
+
+    <!-- CONNECTIONS -->
+    <section class="game-section" id="connections">
+      <div class="game-header conn-header">
+        <span class="icon">&#x1F517;</span>
+        <h2>Connections</h2>
+      </div>
+      <div class="nav-dots conn-nav">
+        <div class="dot" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot active" data-index="2"></div>
+        <div class="dot" data-index="3"></div>
+      </div>
+      <div class="conn-date" id="connDate"></div>
+      <div class="conn-cards" id="connCards">
+        <div class="conn-card yellow-card" data-color="yellow" data-state="0">
+          <span class="card-text">tap to reveal</span>
+          <span class="state-badge">1/3</span>
+        </div>
+        <div class="conn-card green-card" data-color="green" data-state="0">
+          <span class="card-text">tap to reveal</span>
+          <span class="state-badge">1/3</span>
+        </div>
+        <div class="conn-card blue-card" data-color="blue" data-state="0">
+          <span class="card-text">tap to reveal</span>
+          <span class="state-badge">1/3</span>
+        </div>
+        <div class="conn-card purple-card" data-color="purple" data-state="0">
+          <span class="card-text">tap to reveal</span>
+          <span class="state-badge">1/3</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIPS -->
+    <section class="game-section" id="pips">
+      <div class="game-header pips-header">
+        <span class="icon">&#x1F3B2;</span>
+        <h2>Pips</h2>
+      </div>
+      <div class="nav-dots pips-nav">
+        <div class="dot" data-index="0"></div>
+        <div class="dot" data-index="1"></div>
+        <div class="dot" data-index="2"></div>
+        <div class="dot active" data-index="3"></div>
+      </div>
+      <div class="pips-tabs" id="pipsTabs">
+        <button class="pips-tab active" data-diff="easy">Easy</button>
+        <button class="pips-tab" data-diff="medium">Medium</button>
+        <button class="pips-tab" data-diff="hard">Hard</button>
+      </div>
+      <div class="pips-date" id="pipsDate"></div>
+      <div class="pips-scroll">
+        <div class="pips-board-wrap" id="pipsBoardWrap">
+          <div class="pips-board" id="pipsBoard">
+            <div class="pips-status">loading&hellip;</div>
+          </div>
+        </div>
+        <div class="pips-tip" id="pipsTip">tap a square to reveal its domino</div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="swipe-hint" id="swipeHint">swipe &#8592; &#8594; to navigate</div>
+
+  <script src="js/swipe.js"></script>
+  <script src="js/spelling-bee.js"></script>
+  <script src="js/wordle.js"></script>
+  <script src="js/connections.js"></script>
+  <script src="js/pips.js"></script>
+</body>
+</html>
