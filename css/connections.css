@@ -1,0 +1,119 @@
+/* === Connections Theme === */
+#connections {
+  background: #f5f5f0;
+}
+
+.conn-header {
+  background: #7c5cbf;
+}
+
+.conn-header h2 {
+  color: #fff;
+}
+
+.conn-nav {
+  background: #f5f5f0;
+}
+
+/* === Puzzle Date === */
+.conn-date {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.3px;
+  padding: 2px 16px 0;
+  min-height: 16px;
+  flex-shrink: 0;
+}
+
+.conn-date.stale {
+  color: rgba(180, 0, 0, 0.7);
+  font-style: italic;
+}
+
+/* === Cards Container === */
+.conn-cards {
+  padding: 20px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+/* === Card Base === */
+.conn-card {
+  border-radius: 10px;
+  padding: 20px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex: 1;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  min-height: 80px;
+}
+
+/* === Card Colors === */
+.conn-card.yellow-card { background: #f9df6d; color: #000; }
+.conn-card.green-card { background: #a0c35a; color: #000; }
+.conn-card.blue-card { background: #b0c4ef; color: #000; }
+.conn-card.purple-card { background: #ba81c5; color: #fff; }
+
+/* === Card States === */
+.conn-card[data-state="0"] {
+  opacity: 0.6;
+}
+
+.conn-card[data-state="0"] .card-text {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.conn-card[data-state="1"] .card-text {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.conn-card[data-state="2"] .card-text {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.conn-card[data-state="3"] .card-text {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* === State Badge === */
+.state-badge {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* === Card Transition === */
+.conn-card .card-text,
+.conn-card .card-answers {
+  transition: opacity 0.2s ease;
+}
+
+/* === Error State === */
+.conn-card.error {
+  opacity: 0.4;
+}
+
+.conn-card.error .card-text {
+  font-size: 12px;
+  font-style: italic;
+}
