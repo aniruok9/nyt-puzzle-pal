@@ -1,0 +1,53 @@
+# Publishes the site to GitHub Pages with the next week of Connections and
+# Pips puzzles baked in as static files (scripts/fetch-puzzles.js), so visitors
+# load them from this site instead of through third-party CORS proxies.
+#
+# Committed in the private repo and copied to the public one by deploy.sh, but
+# only runs in the public repo — the one GitHub Pages serves. Requires
+# Settings → Pages → Source: "GitHub Actions" there.
+#
+# Note: GitHub disables scheduled workflows in public repos after 60 days with
+# no commits. Deploying counts; otherwise re-enable it from the Actions tab.
+name: Deploy
+
+on:
+  push:
+    branches: [master] # deploy.sh force-pushes here
+  schedule:
+    - cron: '17 9 * * *' # daily; the week of lookahead absorbs late or missed runs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.repository == 'aniruok9/nyt-puzzle-pal'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+
+      # A failed scheduled run stops here, so the previous deployment and its
+      # puzzles stay live. A push deploys anyway so code changes still ship;
+      # the page falls back to CORS proxies for any puzzle file it can't find.
+      - name: Fetch puzzles
+        run: node scripts/fetch-puzzles.js
+        continue-on-error: ${{ github.event_name == 'push' }}
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,0 +1,95 @@
+/* === Spelling Bee Theme === */
+#spellingBee {
+  background: #f7f3e8;
+}
+
+.bee-header {
+  background: #f7da21;
+}
+
+.bee-header h2 {
+  color: #000;
+}
+
+.bee-nav {
+  background: #f7f3e8;
+}
+
+.bee-sticky {
+  background: #f7f3e8;
+  border-bottom: 1px solid #e0d9c8;
+}
+
+/* === Letter Boxes === */
+.bee-input-row {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 20px 16px 0;
+}
+
+.bee-box {
+  width: 44px;
+  height: 44px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  background: #fff;
+  caret-color: transparent;
+  text-transform: uppercase;
+}
+
+.bee-box:focus {
+  outline: none;
+  border-color: #c8a800;
+  box-shadow: 0 0 0 2px rgba(247, 218, 33, 0.3);
+}
+
+.bee-box.center {
+  border-color: #f7da21;
+  background: #fef9e0;
+}
+
+/* === Results === */
+.bee-results-header {
+  font-size: 12px;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 12px 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e0d9c8;
+}
+
+.bee-word {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  margin-bottom: 4px;
+}
+
+.bee-word:nth-child(even) {
+  background: rgba(247, 218, 33, 0.08);
+}
+
+.bee-word .pts {
+  color: #b8960c;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.bee-word.pangram {
+  background: #f7da21;
+  color: #000;
+  font-weight: 700;
+}
+
+.bee-word.pangram .pts {
+  color: #665a00;
+}
